@@ -513,3 +513,546 @@ main {
     }
 }
 
+/* =========================
+   SEÇÃO CURSOS
+========================= */
+
+.cursos {
+    width: 100%;
+    padding: 100px 0;
+    background: radial-gradient(circle at top, #0d2b4d 0%, #071726 70%);
+    display: flex;
+    justify-content: center;
+}
+
+.cursos .container {
+    width: 100%;
+    max-width: 1200px;
+    padding: 0 20px;
+}
+
+/* =========================
+   TEXOS
+========================= */
+
+.curso-text {
+    text-align: center;
+    margin-bottom: 60px;
+}
+
+.curso-text h2 {
+    color: #d4b07a;
+    font-size: 1.3rem;
+    font-weight: 500;
+    margin-bottom: 12px;
+    letter-spacing: 1px;
+}
+
+.curso-text h3 {
+    color: #fff;
+    font-size: 2.7rem;
+    font-weight: 600;
+    position: relative;
+    display: inline-block;
+    padding-bottom: 20px;
+}
+
+.curso-text h3::after {
+    content: "";
+    width: 120px;
+    height: 3px;
+    background: #d4b07a;
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    bottom: 0;
+    border-radius: 10px;
+    box-shadow: 0 0 10px #d4b07a;
+}
+
+/* =========================
+   CONTAINER DOS CARDS
+========================= */
+
+.container-cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 35px;
+}
+
+/* =========================
+   CARD
+========================= */
+
+.curso-card {
+    background: #0c1f35;
+    border: 2px solid #d4b07a;
+    border-radius: 18px;
+    overflow: hidden;
+    position: relative;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.4);
+}
+
+/* =========================
+   IMAGEM
+========================= */
+
+.curso-img {
+    width: 100%;
+    height: 230px;
+    overflow: hidden;
+}
+
+.curso-img img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+/* =========================
+   ÁREA DO ÍCONE
+========================= */
+
+.curso-icon {
+    width: 65px;
+    height: 65px;
+    border-radius: 50%;
+    background: #0c1f35;
+    border: 2px solid #d4b07a;
+
+    position: absolute;
+    left: 22px;
+    top: 195px;
+    z-index: 10;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    overflow: hidden;
+}
+
+/* CASO USE IMAGEM */
+
+.curso-icon img {
+    width: 32px;
+    height: 32px;
+    object-fit: contain;
+}
+
+/* =========================
+   INFO
+========================= */
+
+.curso-info {
+    padding: 50px 25px 30px;
+}
+
+.curso-info h3 {
+    color: #fff;
+    font-size: 2rem;
+    font-style: italic;
+    margin-bottom: 15px;
+    font-weight: 700;
+}
+
+.curso-info p {
+    color: #d7d7d7;
+    font-size: 0.95rem;
+    line-height: 1.7;
+    margin-bottom: 25px;
+}
+
+.curso-info a {
+    color: #d4b07a;
+    text-decoration: none;
+    font-size: 1rem;
+    font-weight: 500;
+}
+
+/* =========================
+   RESPONSIVO
+========================= */
+
+@media(max-width: 900px) {
+
+    .container-cards {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+}
+
+@media(max-width: 768px) {
+
+    .cursos {
+        padding: 80px 0;
+    }
+
+    .curso-text {
+        margin-bottom: 45px;
+    }
+
+    .curso-text h3 {
+        font-size: 2rem;
+    }
+
+    .container-cards {
+        grid-template-columns: 1fr;
+    }
+
+    .curso-img {
+        height: 220px;
+    }
+
+}
+
+/* =========================
+   FAIXA MATRÍCULAS
+========================= */
+
+.banner {
+    width: 100%;
+    overflow: hidden;
+}
+
+.banner .container {
+    width: 100%;
+    max-width: 100%;
+    padding: 0;
+    margin: 0;
+}
+
+.banner img {
+    width: 100%;
+    height: auto;
+    display: block;
+    object-fit: cover;
+}
+
+/* =========================
+   SEÇÃO SOBRE
+========================= */
+
+.sobre {
+    width: 100%;
+    padding: 110px 0;
+    background: #e8d7c3;
+}
+
+.sobre .container {
+    width: 100%;
+    max-width: 1250px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+/* =========================
+   TOPO SOBRE
+========================= */
+
+.sobre-pilares {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 70px;
+    margin-bottom: 70px;
+}
+
+/* =========================
+   IMAGEM
+========================= */
+
+.sobre-img {
+    width: 48%;
+}
+
+.sobre-img img {
+    width: 100%;
+    height: 450px;
+    object-fit: cover;
+    display: block;
+    border-radius: 10px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+}
+
+/* =========================
+   TEXTOS
+========================= */
+
+.sobre-text {
+    width: 52%;
+}
+
+.sobre-text h3 {
+    color: #b78b53;
+    font-size: 1.1rem;
+    margin-bottom: 15px;
+    font-weight: 700;
+    letter-spacing: 1px;
+}
+
+.sobre-text h4 {
+    color: #1c2430;
+    font-size: 3rem;
+    line-height: 1.2;
+    margin-bottom: 45px;
+    font-weight: 600;
+}
+
+.sobre-text h4 span {
+    color: #c39a66;
+}
+
+/* =========================
+   CARDS SOBRE
+========================= */
+
+.sobre-card {
+    display: flex;
+    gap: 30px;
+    align-items: flex-start;
+}
+
+.sobre-info {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    text-align: left;
+}
+
+/* ÍCONES */
+
+.sobre-info img {
+    width: 120px;
+    margin-bottom: 15px;
+    object-fit: contain;
+}
+
+/* TÍTULOS */
+
+.sobre-info h3 {
+    color: #1c2430;
+    font-size: 1.4rem;
+    margin-bottom: 12px;
+    font-weight: 700;
+}
+
+/* TEXTOS */
+
+.sobre-info p {
+    color: #4f4f4f;
+    font-size: 0.96rem;
+    line-height: 1.8;
+    margin-bottom: 14px;
+
+    min-height: 120px;
+}
+
+/* LINK */
+
+.saiba-mais {
+    color: #b78b53;
+    text-decoration: none;
+    font-size: 0.95rem;
+    font-weight: 600;
+}
+
+/* =========================
+   HISTÓRIA
+========================= */
+
+.historia {
+    width: 100%;
+    background: #08203a;
+    padding: 50px 45px;
+    border-radius: 12px;
+    text-align: center;
+    margin-bottom: 100px;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+}
+
+.historia h3 {
+    color: #d4b07a;
+    font-size: 2.2rem;
+    margin-bottom: 30px;
+    font-style: italic;
+    font-weight: 700;
+}
+
+.historia p {
+    color: #fff;
+    font-size: 1rem;
+    line-height: 2;
+    max-width: 1000px;
+    margin: 0 auto;
+}
+
+/* =========================
+   DEPOIMENTOS
+========================= */
+
+.depoimentos {
+    text-align: center;
+}
+
+.depoimentos h3 {
+    color: #b78b53;
+    font-size: 1.2rem;
+    letter-spacing: 2px;
+    margin-bottom: 18px;
+    font-weight: 700;
+}
+
+.depoimentos h4 {
+    color: #1c2430;
+    font-size: 3rem;
+    margin-bottom: 80px;
+    position: relative;
+    display: inline-block;
+    padding-bottom: 22px;
+    font-weight: 700;
+}
+
+.depoimentos h4::after {
+    content: "";
+    width: 130px;
+    height: 3px;
+    background: #b78b53;
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    bottom: 0;
+    border-radius: 10px;
+}
+
+/* =========================
+   CARDS DEPOIMENTOS
+========================= */
+
+.depoimentos-card {
+    display: flex;
+    gap: 30px;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.card-aluno {
+    width: 340px;
+    border: 2px solid #b78b53;
+    border-radius: 14px;
+    padding: 35px 28px;
+    text-align: center;
+    background: rgba(255, 255, 255, 0.2);
+}
+
+/* FOTO */
+
+.card-aluno img {
+    width: 75px;
+    height: 75px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin-bottom: 18px;
+}
+
+/* ESTRELAS */
+
+.estrelas {
+    color: #d4b07a;
+    font-size: 1.3rem;
+    margin-bottom: 18px;
+    letter-spacing: 2px;
+}
+
+/* TEXTOS */
+
+.card-aluno p {
+    color: #3f3f3f;
+    font-size: 0.97rem;
+    line-height: 1.8;
+    margin-bottom: 18px;
+}
+
+.card-aluno span {
+    display: block;
+    color: #1c2430;
+    font-size: 1.2rem;
+    font-weight: 700;
+    margin-bottom: 8px;
+}
+
+/* =========================
+   MOBILE
+========================= */
+
+@media(max-width: 768px) {
+
+    .sobre {
+        padding: 80px 0;
+    }
+
+    .sobre-pilares {
+        flex-direction: column;
+        gap: 50px;
+    }
+
+    .sobre-img,
+    .sobre-text {
+        width: 100%;
+    }
+
+    .sobre-img img {
+        height: 320px;
+    }
+
+    .sobre-text h4 {
+        font-size: 2.2rem;
+    }
+
+    /* ARRUMA AS 3 COLUNAS */
+
+    .sobre-card {
+        flex-direction: column;
+        gap: 45px;
+    }
+
+    .sobre-info {
+        width: 100%;
+        align-items: flex-start;
+        text-align: left;
+    }
+
+    .sobre-info img {
+        width: 100px;
+        margin-bottom: 15px;
+    }
+
+    .sobre-info p {
+        min-height: auto;
+    }
+
+    /* HISTÓRIA */
+
+    .historia {
+        padding: 35px 20px;
+    }
+
+    /* DEPOIMENTOS */
+
+    .depoimentos h4 {
+        font-size: 2.2rem;
+    }
+
+    .depoimentos-card {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .card-aluno {
+        width: 100%;
+        max-width: 400px;
+    }
+
+}
