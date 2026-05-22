@@ -53,12 +53,17 @@ body {
    HEADER
 ========================= */
 
+/* ==========================================================================
+   HEADER & NAVIGATION (Com Animação de Entrada)
+   ========================================================================== */
 header {
     width: 100%;
     padding-top: 30px;
-
     position: relative;
     z-index: 10;
+
+    /* Animação ao carregar a página: surge de cima e ganha opacidade */
+    animation: headerFadeIn 0.8s cubic-bezier(0.25, 1, 0.5, 1) forwards;
 }
 
 nav {
@@ -67,238 +72,413 @@ nav {
     justify-content: space-between;
 }
 
-/* =========================
-   LOGO
-========================= */
+/* Keyframe para a entrada do Header */
+@keyframes headerFadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
 
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* ==========================================================================
+   LOGO (Efeito sutil de aproximação no hover)
+   ========================================================================== */
 .logo img {
     width: 180px;
     object-fit: contain;
+    transition: transform 0.3s ease;
 }
 
-/* =========================
-   MENU
-========================= */
+.logo img:hover {
+    transform: scale(1.03);
+}
 
+/* ==========================================================================
+   MENU & BOTÕES (Com Efeitos Avançados de Hover)
+   ========================================================================== */
 nav ul {
     display: flex;
     align-items: center;
     gap: 18px;
-
     list-style: none;
 }
 
 nav ul li a {
     text-decoration: none;
-
     display: flex;
     align-items: center;
     justify-content: center;
-
     min-width: 125px;
     height: 48px;
-
     border-radius: 50px;
-
     background-color: #d8b27a;
-
     color: white;
-
     font-size: 15px;
     font-weight: 600;
+
+    /* Transições suaves para os efeitos de hover */
+    transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease;
+
+    /* Necessário para conter o efeito de brilho interno */
+    position: relative;
+    overflow: hidden;
+}
+
+/* Efeito Hover nos Botões do Menu */
+nav ul li a:hover {
+    background-color: #c99f66;
+    /* Escurece o dourado de forma elegante */
+    transform: translateY(-2px) scale(1.04);
+    /* Sobe levemente e cresce */
+    box-shadow: 0 6px 20px rgba(216, 178, 122, 0.4);
+    /* Sombra neon dourada */
+}
+
+/* Efeito Ativo (Ao clicar) */
+nav ul li a:active {
+    transform: translateY(0) scale(0.98);
+    /* Dá a sensação física de clique */
+}
+
+/* --- Efeito de Brilho Extra (Glow Passante) --- */
+nav ul li a::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -50%;
+    width: 20%;
+    height: 100%;
+    background: linear-gradient(to right,
+            rgba(255, 255, 255, 0) 0%,
+            rgba(255, 255, 255, 0.3) 50%,
+            rgba(255, 255, 255, 0) 100%);
+    transform: skewX(-25deg);
+    /* Inclina o feixe de luz */
+    transition: 0.75s ease;
+}
+
+/* Ativa o feixe de luz cruzando o botão no hover */
+nav ul li a:hover::after {
+    left: 125%;
 }
 
 /* =========================
    MAIN
 ========================= */
 
+/* ==========================================================================
+   MAIN CONTAINER (Configurações base)
+   ========================================================================== */
 main {
     width: 100%;
     min-height: calc(100vh - 100px);
-
     display: flex;
     align-items: center;
-
     position: relative;
     z-index: 2;
 }
 
-/* =========================
-   TEXTO PRINCIPAL
-========================= */
-
+/* ==========================================================================
+   TEXTO PRINCIPAL (Com efeito Cascata / Stagger)
+   ========================================================================== */
 .main-text {
     width: 100%;
     max-width: 650px;
-
     padding-top: 20px;
 }
 
+/* Base para os elementos que vão surgir da esquerda para a direita */
+.main-text h1,
+.main-text p,
+.botao-main {
+    opacity: 0;
+    transform: translateX(-30px);
+    animation: fadeInUpLeft 0.8s cubic-bezier(0.25, 1, 0.5, 1) forwards;
+}
+
+/* Ajustando os tempos de atraso (Delay) para o efeito cascata */
+.main-text h1 {
+    animation-delay: 0.2s;
+}
+
+.main-text p {
+    animation-delay: 0.5s;
+    /* Surge logo após o H1 */
+}
+
+.botao-main {
+    animation-delay: 0.8s;
+    /* Surge por último */
+}
+
+/* Keyframe da revelação suave */
+@keyframes fadeInUpLeft {
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+/* --- Estilização do H1 --- */
 .main-text h1 {
     color: white;
-
     font-size: 38px;
     font-weight: 300;
-
     line-height: 1.1;
-
     margin-bottom: 25px;
 }
 
 /* TEXTO DOURADO */
-
 .main-text h1 span {
     color: #d8b27a;
     font-weight: bold;
 }
 
-/* MATRÍCULA GRANDE */
-
+/* MATRÍCULA GRANDE (Efeito sutil de escala ao aparecer) */
 .main-text h1 span:first-of-type {
     display: block;
-
     font-size: 88px;
-
     line-height: 1;
-
     margin: 5px 0 10px;
+
+    /* Um pequeno bônus: faz a palavra gigante crescer levemente na tela */
+    animation: scaleUp 1.2s cubic-bezier(0.25, 1, 0.5, 1) backwards;
+    animation-delay: 0.3s;
+}
+
+@keyframes scaleUp {
+    from {
+        transform: scale(0.95);
+    }
+
+    to {
+        transform: scale(1);
+    }
 }
 
 /* PARÁGRAFO */
-
 .main-text p {
     color: #f1f1f1;
-
     font-size: 22px;
-
     line-height: 1.5;
-
     max-width: 470px;
-
     margin-bottom: 35px;
 }
 
-/* =========================
-   BOTÕES
-========================= */
-
+/* ==========================================================================
+   BOTÕES (Interações e Feedbacks Visuais)
+   ========================================================================== */
 .botao-main {
     display: flex;
     align-items: center;
-
     gap: 18px;
-
     margin-bottom: 45px;
 }
 
 .botao-main a {
     text-decoration: none;
-
     height: 58px;
-
     padding: 0 34px;
-
     border-radius: 12px;
-
     display: flex;
     align-items: center;
     justify-content: center;
-
     font-size: 17px;
     font-weight: 600;
+
+    /* Transição suave para QUALQUER mudança de estilo no hover */
+    transition: all 0.3s cubic-bezier(0.25, 1, 0.5, 1);
 }
 
+/* --- Botão Matrícula (Preenchido) --- */
 .botao-matricula {
     background: #d8b27a;
     color: #07152f;
+    box-shadow: 0 4px 15px rgba(216, 178, 122, 0.2);
 }
 
+.botao-matricula:hover {
+    background: #e5bf88;
+    /* Dourado ligeiramente mais claro */
+    transform: translateY(-3px);
+    /* Levanta o botão */
+    box-shadow: 0 8px 25px rgba(216, 178, 122, 0.4);
+    /* Sombra projeta mais longe */
+}
+
+.botao-matricula:active {
+    transform: translateY(-1px);
+}
+
+/* --- Botão Cursos (Vazado/Borda) --- */
 .botao-cursos {
     border: 2px solid #d8b27a;
     color: white;
+    background: transparent;
+}
+
+.botao-cursos:hover {
+    background: rgba(216, 178, 122, 0.1);
+    /* Fundo sutil dourado translúcido */
+    color: #d8b27a;
+    /* O texto assume a cor dourada */
+    transform: translateY(-3px);
+    border-color: #e5bf88;
+}
+
+.botao-cursos:active {
+    transform: translateY(-1px);
 }
 
 /* =========================
    ESTATÍSTICAS
 ========================= */
 
+/* ==========================================================================
+   CONTAINER ESTATÍSTICAS (Efeito Vidro + Entrada Suave)
+   ========================================================================== */
 .estatisticas {
     width: 100%;
     max-width: 860px;
-
     display: flex;
     align-items: stretch;
     justify-content: space-between;
-
     gap: 30px;
-
     background: rgba(10, 22, 48, 0.88);
-
     backdrop-filter: blur(8px);
-
     border-radius: 28px;
-
     padding: 28px 35px;
-
     position: relative;
+
+    /* Borda sutil para enriquecer o efeito de vidro */
+    border: 1px solid rgba(216, 178, 122, 0.15);
+
+    /* Animação de entrada: surge de baixo e expande levemente */
+    opacity: 0;
+    transform: translateY(30px) scale(0.98);
+    animation: statsReveal 1s cubic-bezier(0.25, 1, 0.5, 1) forwards;
+    animation-delay: 1.1s;
+    /* Espera a seção principal carregar */
+
+    transition: box-shadow 0.4s ease, border-color 0.4s ease;
 }
 
+/* Efeito ao passar o mouse no bloco inteiro */
+.estatisticas:hover {
+    border-color: rgba(216, 178, 122, 0.4);
+    box-shadow: 0 15px 35px rgba(7, 21, 47, 0.6), 0 0 20px rgba(216, 178, 122, 0.05);
+}
+
+/* Keyframe de revelação do bloco */
+@keyframes statsReveal {
+    to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+}
+
+/* ==========================================================================
+   BLOCOS INTERNOS DE TEXTO
+   ========================================================================== */
 .estatistica-text {
     flex: 1;
-
     display: flex;
     flex-direction: column;
     justify-content: center;
-
     position: relative;
-
     min-height: 70px;
-
     padding-right: 20px;
+
+    /* Prepara os textos para subirem de leve individualmente */
+    opacity: 0;
+    transform: translateY(15px);
+    animation: textFadeUp 0.6s cubic-bezier(0.25, 1, 0.5, 1) forwards;
 }
 
-/* LINHAS ENTRE ESTATÍSTICAS */
+/* Efeito cascata para cada bloco de texto surgir um após o outro */
+.estatistica-text:nth-child(1) {
+    animation-delay: 1.3s;
+}
 
+.estatistica-text:nth-child(2) {
+    animation-delay: 1.5s;
+}
+
+.estatistica-text:nth-child(3) {
+    animation-delay: 1.7s;
+}
+
+@keyframes textFadeUp {
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* LINHAS ENTRE ESTATÍSTICAS (Animação de crescimento vertical) */
 .estatistica-text:not(:last-child)::after {
     content: "";
-
     position: absolute;
-
     top: 50%;
     right: -15px;
-
-    transform: translateY(-50%);
-
+    transform: translateY(-50%) scaleY(0);
+    /* Começa com altura zerada */
     width: 2px;
     height: 65px;
-
     background: #d8b27a;
+
+    /* Animação que faz a linha "esticar" do centro para fora */
+    animation: lineGrow 0.8s cubic-bezier(0.25, 1, 0.5, 1) forwards;
+    animation-delay: 1.5s;
+    transform-origin: center;
 }
 
-/* TÍTULOS */
+@keyframes lineGrow {
+    to {
+        transform: translateY(-50%) scaleY(1);
+    }
+}
 
+/* ==========================================================================
+   TÍTULOS (Números) e PARÁGRAFOS
+   ========================================================================== */
 .estatistica-text h3 {
     color: #d8b27a;
-
     font-size: 28px;
     font-weight: bold;
-
     margin-bottom: 10px;
-
     white-space: nowrap;
+
+    /* Transição para o efeito de hover */
+    transition: transform 0.3s ease, text-shadow 0.3s ease;
 }
 
-/* TEXTOS */
+/* Feedback sutil quando passa o mouse por cima do número */
+.estatistica-text:hover h3 {
+    transform: scale(1.08);
+    /* O número cresce ligeiramente */
+    text-shadow: 0 0 10px rgba(216, 178, 122, 0.6);
+    /* Brilho neon */
+}
 
 .estatistica-text p {
     color: white;
-
     font-size: 15px;
     line-height: 1.4;
-
     margin: 0;
-
     max-width: 150px;
+    opacity: 0.85;
+    transition: opacity 0.3s ease;
+}
+
+.estatistica-text:hover p {
+    opacity: 1;
+    /* O texto ganha nitidez total no hover */
 }
 
 /* =========================
@@ -397,82 +577,120 @@ main {
     }
 }
 
-/* =========================
-   DIFERENCIAIS
-========================= */
-
+/* ==========================================================================
+   DIFERENCIAIS (Seção Base)
+   ========================================================================== */
 .diferenciais {
     width: 100%;
-
     background: #e7e1d9;
-
     padding: 50px 0;
+    overflow: hidden;
+    /* Evita barras de rolagem indesejadas durante a animação */
 }
 
 /* CONTAINER */
-
 .diferenciais .container {
     display: flex;
     align-items: flex-start;
     justify-content: space-between;
-
     gap: 45px;
+    flex-wrap: wrap;
+    /* Garante que quebre linha em telas menores */
 }
 
-/* CARD */
-
+/* ==========================================================================
+   CARDS DE DIFERENCIAIS (Animação de Entrada Estilizada)
+   ========================================================================== */
 .diferenciais-card {
     flex: 1;
-
     display: flex;
     align-items: flex-start;
-
     gap: 22px;
+    min-width: 250px;
+    /* Evita que o card esmague demais */
 
-    min-width: 0;
+    /* Configuração para a animação de surgimento lateral */
+    opacity: 0;
+    transform: translateX(40px);
+    animation: diferenciaisReveal 0.8s cubic-bezier(0.25, 1, 0.5, 1) forwards;
 }
 
-/* IMAGENS */
+/* Efeito cascata para cada card surgir com um tempo diferente */
+.diferenciais-card:nth-child(1) {
+    animation-delay: 0.2s;
+}
 
+.diferenciais-card:nth-child(2) {
+    animation-delay: 0.4s;
+}
+
+.diferenciais-card:nth-child(3) {
+    animation-delay: 0.6s;
+}
+
+/* Keyframe do surgimento dos cards */
+@keyframes diferenciaisReveal {
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+/* ==========================================================================
+   IMAGENS / ÍCONES (Efeito Flutuante no Hover)
+   ========================================================================== */
 .diferenciais-card img {
     width: 120px;
     min-width: 120px;
-
     object-fit: contain;
+
+    /* Transição suave para o efeito de hover */
+    transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
 }
 
-/* TEXTOS */
+/* Quando o usuário passa o mouse no CARD, a imagem faz um movimento fluido */
+.diferenciais-card:hover img {
+    transform: translateY(-8px) rotate(3deg) scale(1.05);
+    /* Explicação: Sobe 8px, rotaciona 3 graus para um charme extra e cresce 5% */
+}
 
+/* ==========================================================================
+   TEXTOS (Interações de Cor)
+   ========================================================================== */
 .diferenciais-text {
     display: flex;
     flex-direction: column;
 }
 
-/* TITULO */
-
 .diferenciais-text h4 {
     color: #1d1d1d;
-
     font-size: 18px;
     font-weight: 700;
-
     line-height: 1.2;
-
     margin-bottom: 12px;
-
     max-width: 170px;
+
+    /* Prepara o título para mudar de cor no hover */
+    transition: color 0.3s ease;
 }
 
-/* PARÁGRAFO */
+/* O título ganha um leve destaque para a cor dourada tema do seu site */
+.diferenciais-card:hover .diferenciais-text h4 {
+    color: #d8b27a;
+}
 
 .diferenciais-text p {
     color: #3b3b3b;
-
     font-size: 16px;
-
     line-height: 1.5;
-
     max-width: 210px;
+
+    transition: color 0.3s ease;
+}
+
+/* O parágrafo ganha um tom ligeiramente mais escuro e nítido no hover */
+.diferenciais-card:hover .diferenciais-text p {
+    color: #1d1d1d;
 }
 
 /* =========================
@@ -513,10 +731,9 @@ main {
     }
 }
 
-/* =========================
+/* ==========================================================================
    SEÇÃO CURSOS
-========================= */
-
+   ========================================================================== */
 .cursos {
     width: 100%;
     padding: 100px 0;
@@ -531,10 +748,9 @@ main {
     padding: 0 20px;
 }
 
-/* =========================
-   TEXOS
-========================= */
-
+/* ==========================================================================
+   TEXTOS (Com animação de pulsação na linha)
+   ========================================================================== */
 .curso-text {
     text-align: center;
     margin-bottom: 60px;
@@ -568,39 +784,68 @@ main {
     bottom: 0;
     border-radius: 10px;
     box-shadow: 0 0 10px #d4b07a;
+
+    /* Animação contínua de pulsação de brilho na linha */
+    animation: linePulse 2s infinite ease-in-out;
 }
 
-/* =========================
-   CONTAINER DOS CARDS
-========================= */
+@keyframes linePulse {
 
+    0%,
+    100% {
+        box-shadow: 0 0 8px #d4b07a;
+        opacity: 0.8;
+    }
+
+    50% {
+        box-shadow: 0 0 20px #d4b07a, 0 0 30px rgba(212, 176, 122, 0.4);
+        opacity: 1;
+    }
+}
+
+/* ==========================================================================
+   CONTAINER DOS CARDS
+   ========================================================================== */
 .container-cards {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
     gap: 35px;
 }
 
-/* =========================
-   CARD
-========================= */
-
+/* ==========================================================================
+   CARD (Efeito de Elevação e Brilho de Borda)
+   ========================================================================== */
 .curso-card {
     background: #0c1f35;
     border: 2px solid #d4b07a;
     border-radius: 18px;
     overflow: hidden;
     position: relative;
-    box-shadow: 0 0 20px rgba(0, 0, 0, 0.4);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+
+    /* Transição suave para todas as propriedades do hover */
+    transition: transform 0.4s cubic-bezier(0.25, 1, 0.5, 1),
+        box-shadow 0.4s cubic-bezier(0.25, 1, 0.5, 1),
+        border-color 0.4s ease;
 }
 
-/* =========================
-   IMAGEM
-========================= */
+/* Estado de Hover do Card */
+.curso-card:hover {
+    transform: translateY(-10px);
+    /* Move o card para cima */
+    border-color: #fff;
+    /* A borda transiciona sutilmente de dourado para branco */
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.6), 0 0 15px rgba(212, 176, 122, 0.2);
+}
 
+/* ==========================================================================
+   IMAGEM (Zoom controlado no hover)
+   ========================================================================== */
 .curso-img {
     width: 100%;
     height: 230px;
     overflow: hidden;
+    /* Crucial para o zoom não vazar do card */
 }
 
 .curso-img img {
@@ -608,43 +853,62 @@ main {
     height: 100%;
     object-fit: cover;
     display: block;
+
+    /* Configura o tempo do efeito de zoom */
+    transition: transform 0.6s cubic-bezier(0.25, 1, 0.5, 1);
 }
 
-/* =========================
-   ÁREA DO ÍCONE
-========================= */
+/* Dispara o zoom na imagem de dentro quando o CARD recebe hover */
+.curso-card:hover .curso-img img {
+    transform: scale(1.08) rotate(1deg);
+    /* Um leve giro dá dinamismo à imagem */
+}
 
+/* ==========================================================================
+   ÁREA DO ÍCONE (Animação de "Salto")
+   ========================================================================== */
 .curso-icon {
     width: 65px;
     height: 65px;
     border-radius: 50%;
     background: #0c1f35;
     border: 2px solid #d4b07a;
-
     position: absolute;
     left: 22px;
     top: 195px;
     z-index: 10;
-
     display: flex;
     align-items: center;
     justify-content: center;
-
     overflow: hidden;
+
+    /* Transição para o ícone flutuar */
+    transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275), background-color 0.4s ease;
 }
 
-/* CASO USE IMAGEM */
+/* Faz o ícone dar um pequeno salto para cima quando o card recebe hover */
+.curso-card:hover .curso-icon {
+    transform: translateY(-5px);
+    background-color: #d4b07a;
+    /* Inverte o fundo do ícone para dourado */
+}
 
 .curso-icon img {
     width: 32px;
     height: 32px;
     object-fit: contain;
+    transition: transform 0.4s ease, filter 0.4s ease;
 }
 
-/* =========================
-   INFO
-========================= */
+/* Se você usar um ícone escuro, essa regra altera a cor dele para combinar com o fundo dourado invertido */
+.curso-card:hover .curso-icon img {
+    transform: scale(1.1);
+    filter: brightness(0) saturate(100%) invert(9%) sepia(26%) saturate(3429%) hue-rotate(197deg) brightness(96%) contrast(98%);
+}
 
+/* ==========================================================================
+   INFO (Links Interativos)
+   ========================================================================== */
 .curso-info {
     padding: 50px 25px 30px;
 }
@@ -664,11 +928,39 @@ main {
     margin-bottom: 25px;
 }
 
+/* Estilização e efeito do link "Saiba Mais / Ver Curso" */
 .curso-info a {
     color: #d4b07a;
     text-decoration: none;
     font-size: 1rem;
     font-weight: 500;
+    display: inline-block;
+    position: relative;
+    transition: color 0.3s ease;
+}
+
+/* Criando uma linha sutil abaixo do link que se expande do centro ao passar o mouse */
+.curso-info a::after {
+    content: '';
+    position: absolute;
+    width: 100%;
+    transform: scaleX(0);
+    height: 1.5px;
+    bottom: -2px;
+    left: 0;
+    background-color: #fff;
+    transform-origin: bottom right;
+    transition: transform 0.3s cubic-bezier(0.25, 1, 0.5, 1);
+}
+
+.curso-card:hover .curso-info a {
+    color: #fff;
+    /* O link muda de cor */
+}
+
+.curso-card:hover .curso-info a::after {
+    transform: scaleX(1);
+    transform-origin: bottom left;
 }
 
 /* =========================
@@ -711,9 +1003,14 @@ main {
    FAIXA MATRÍCULAS
 ========================= */
 
+/* ==========================================================================
+   BANNER (Ajustado para tamanho menor e elegante)
+   ========================================================================== */
 .banner {
     width: 100%;
     overflow: hidden;
+    box-shadow: inset 0 0 20px rgba(0, 0, 0, 0.2);
+    /* Sombra interna sutil */
 }
 
 .banner .container {
@@ -725,15 +1022,32 @@ main {
 
 .banner img {
     width: 100%;
-    height: auto;
+
+    /* Altere o valor abaixo para controlar a altura do banner:
+       350px é um tamanho médio excelente para faixas de transição.
+       Se ainda achar grande, pode testar com 280px ou 300px.
+    */
+    height: 350px;
+
     display: block;
     object-fit: cover;
+    /* Recorta a imagem proporcionalmente, impedindo que ela fique achatada */
+    object-position: center;
+    /* Mantém o centro da imagem sempre visível */
+
+    /* Efeito sutil de nitidez ao passar o mouse, sem alterar o tamanho do bloco */
+    transition: filter 0.4s ease;
 }
 
-/* =========================
-   SEÇÃO SOBRE
-========================= */
+/* Interação suave */
+.banner:hover img {
+    filter: brightness(1.05);
+    /* Dá um leve ganho de luz ao passar o mouse */
+}
 
+/* ==========================================================================
+   SEÇÃO SOBRE (Estrutura Blindada Estática)
+   ========================================================================== */
 .sobre {
     width: 100%;
     padding: 110px 0;
@@ -745,12 +1059,12 @@ main {
     max-width: 1250px;
     margin: 0 auto;
     padding: 0 20px;
+    box-sizing: border-box;
 }
 
-/* =========================
-   TOPO SOBRE
-========================= */
-
+/* ==========================================================================
+   TOPO SOBRE (Flexbox Puro - Sem movimentos)
+   ========================================================================== */
 .sobre-pilares {
     display: flex;
     align-items: flex-start;
@@ -759,12 +1073,15 @@ main {
     margin-bottom: 70px;
 }
 
-/* =========================
-   IMAGEM
-========================= */
-
+/* IMAGEM (Segura contra quebras) */
 .sobre-img {
     width: 48%;
+    position: relative;
+    overflow: hidden;
+    /* Mantém o zoom contido aqui dentro */
+    border-radius: 10px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+    transition: box-shadow 0.3s ease;
 }
 
 .sobre-img img {
@@ -772,14 +1089,20 @@ main {
     height: 450px;
     object-fit: cover;
     display: block;
-    border-radius: 10px;
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+    /* O único movimento permitido é o zoom interno na imagem, que não afeta o layout de fora */
+    transition: transform 0.5s ease;
 }
 
-/* =========================
-   TEXTOS
-========================= */
+/* Animação apenas visual na imagem */
+.sobre-img:hover {
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.25);
+}
 
+.sobre-img:hover img {
+    transform: scale(1.04);
+}
+
+/* TEXTOS DO TOPO */
 .sobre-text {
     width: 52%;
 }
@@ -804,10 +1127,9 @@ main {
     color: #c39a66;
 }
 
-/* =========================
-   CARDS SOBRE
-========================= */
-
+/* ==========================================================================
+   CARDS SOBRE (Pilares)
+   ========================================================================== */
 .sobre-card {
     display: flex;
     gap: 30px;
@@ -822,15 +1144,19 @@ main {
     text-align: left;
 }
 
-/* ÍCONES */
-
+/* Ícones dos Cards (Animação de opacidade e nitidez, sem mover) */
 .sobre-info img {
     width: 120px;
     margin-bottom: 15px;
     object-fit: contain;
+    opacity: 0.85;
+    transition: opacity 0.3s ease, filter 0.3s ease;
 }
 
-/* TÍTULOS */
+.sobre-info:hover img {
+    opacity: 1;
+    filter: drop-shadow(0 4px 8px rgba(183, 139, 83, 0.2));
+}
 
 .sobre-info h3 {
     color: #1c2430;
@@ -839,30 +1165,32 @@ main {
     font-weight: 700;
 }
 
-/* TEXTOS */
-
 .sobre-info p {
     color: #4f4f4f;
     font-size: 0.96rem;
     line-height: 1.8;
     margin-bottom: 14px;
-
     min-height: 120px;
 }
 
-/* LINK */
-
+/* Link Saiba Mais */
 .saiba-mais {
     color: #b78b53;
     text-decoration: none;
     font-size: 0.95rem;
     font-weight: 600;
+    transition: color 0.3s ease, letter-spacing 0.3s ease;
 }
 
-/* =========================
-   HISTÓRIA
-========================= */
+.saiba-mais:hover {
+    color: #c39a66;
+    letter-spacing: 0.5px;
+    /* Abre sutilmente o espaçamento das letras */
+}
 
+/* ==========================================================================
+   HISTÓRIA (Mudança de cor de borda e sombra)
+   ========================================================================== */
 .historia {
     width: 100%;
     background: #08203a;
@@ -871,6 +1199,16 @@ main {
     text-align: center;
     margin-bottom: 100px;
     box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+    box-sizing: border-box;
+    border: 2px solid transparent;
+    /* Reserva o espaço da borda antes para não empurrar nada */
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.historia:hover {
+    border-color: #d4b07a;
+    /* Apenas acende a borda dourada */
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.4);
 }
 
 .historia h3 {
@@ -889,12 +1227,12 @@ main {
     margin: 0 auto;
 }
 
-/* =========================
-   DEPOIMENTOS
-========================= */
-
+/* ==========================================================================
+   DEPOIMENTOS (Totalmente estático e seguro)
+   ========================================================================== */
 .depoimentos {
     text-align: center;
+    width: 100%;
 }
 
 .depoimentos h3 {
@@ -927,17 +1265,15 @@ main {
     border-radius: 10px;
 }
 
-/* =========================
-   CARDS DEPOIMENTOS
-========================= */
-
 .depoimentos-card {
     display: flex;
     gap: 30px;
     justify-content: center;
     flex-wrap: wrap;
+    width: 100%;
 }
 
+/* Card Aluno - Efeitos apenas de cor de fundo e sombra */
 .card-aluno {
     width: 340px;
     border: 2px solid #b78b53;
@@ -945,19 +1281,31 @@ main {
     padding: 35px 28px;
     text-align: center;
     background: rgba(255, 255, 255, 0.2);
+    box-sizing: border-box;
+    transition: background-color 0.3s ease, box-shadow 0.3s ease;
 }
 
-/* FOTO */
+.card-aluno:hover {
+    background-color: rgba(255, 255, 255, 0.4);
+    /* O fundo fica ligeiramente mais claro */
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.05);
+}
 
+/* Foto do Aluno (Glow circular sutil) */
 .card-aluno img {
     width: 75px;
     height: 75px;
     border-radius: 50%;
     object-fit: cover;
     margin-bottom: 18px;
+    box-shadow: 0 0 0 0px rgba(183, 139, 83, 0);
+    transition: box-shadow 0.3s ease;
 }
 
-/* ESTRELAS */
+.card-aluno:hover img {
+    box-shadow: 0 0 0 4px rgba(183, 139, 83, 0.3);
+    /* Acende uma aura ao redor da foto */
+}
 
 .estrelas {
     color: #d4b07a;
@@ -965,8 +1313,6 @@ main {
     margin-bottom: 18px;
     letter-spacing: 2px;
 }
-
-/* TEXTOS */
 
 .card-aluno p {
     color: #3f3f3f;
@@ -1055,4 +1401,300 @@ main {
         max-width: 400px;
     }
 
+}
+
+/* ==========================================================================
+   BARRA MATRÍCULAS (Estrutura Segura)
+   ========================================================================== */
+.barra-matriculas {
+    width: 100%;
+    background-color: #d6b78c;
+    padding: 25px 0;
+    box-sizing: border-box;
+    position: relative;
+
+    /* Um brilho dourado sutil no fundo para dar acabamento premium */
+    box-shadow: 0 4px 20px rgba(214, 183, 140, 0.15);
+}
+
+.barra-matriculas .container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+    box-sizing: border-box;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 40px;
+}
+
+/* --- BLOCO ESQUERDA --- */
+.matricula-esquerda {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    width: 45%;
+    padding-right: 40px;
+    border-right: 2px solid rgba(0, 0, 0, 0.2);
+    box-sizing: border-box;
+}
+
+/* Efeito suave de nitidez na imagem do ícone */
+.matricula-esquerda img {
+    width: 90px;
+    opacity: 0.9;
+    transition: opacity 0.3s ease, filter 0.3s ease;
+}
+
+/* Quando passa o mouse na barra esquerda, o ícone ganha total nitidez */
+.matricula-esquerda:hover img {
+    opacity: 1;
+    filter: drop-shadow(0 2px 5px rgba(0, 0, 0, 0.15));
+}
+
+.matricula-esquerda h3 {
+    font-size: 2rem;
+    color: #1a1a1a;
+    line-height: 1.2;
+    font-weight: 700;
+}
+
+/* --- BLOCO DIREITA --- */
+.matricula-direita {
+    width: 55%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 25px;
+    box-sizing: border-box;
+}
+
+.matricula-direita p {
+    font-size: 1.6rem;
+    color: #1f1f1f;
+    max-width: 420px;
+    line-height: 1.4;
+}
+
+/* ==========================================================================
+   BOTÃO PRETO (Efeito de Preenchimento Reversivo + Pulso de Atenção)
+   ========================================================================== */
+.botao-preto {
+    background-color: #0c1a2d;
+    color: white;
+    text-decoration: none;
+    padding: 15px 35px;
+    border-radius: 6px;
+    font-size: 1.4rem;
+    font-weight: 600;
+    white-space: nowrap;
+    box-sizing: border-box;
+
+    /* Borda transparente reservada para evitar solavancos no hover */
+    border: 2px solid transparent;
+
+    /* Transição elegante de cor de fundo e borda */
+    transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
+
+    /* Animação contínua e discreta de "atenção" (opcional, mas excelente para conversão) */
+    animation: botaoAtencao 2.5s infinite ease-in-out;
+}
+
+/* Efeito Hover: O botão inverte as cores de forma limpa e sofisticada */
+.botao-preto:hover {
+    background-color: transparent;
+    color: #0c1a2d;
+    border-color: #0c1a2d;
+    /* A borda aparece ocupando o espaço já reservado */
+    box-shadow: 0 4px 15px rgba(12, 26, 45, 0.15);
+}
+
+/* Efeito Ativo (Ao clicar) */
+.botao-preto:active {
+    background-color: rgba(12, 26, 45, 0.1);
+}
+
+/* Keyframe de pulsação sutil na sombra do botão para atrair o olhar, sem tremer o layout */
+@keyframes botaoAtencao {
+
+    0%,
+    100% {
+        box-shadow: 0 0 0 0 rgba(12, 26, 45, 0);
+    }
+
+    50% {
+        box-shadow: 0 0 0 6px rgba(12, 26, 45, 0.12);
+        /* Cria uma aura transparente em volta */
+    }
+}
+
+/* RESPONSIVO */
+
+@media screen and (max-width: 900px) {
+
+    .barra-matriculas .container {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 30px;
+    }
+
+    .matricula-esquerda {
+        width: 100%;
+        border-right: none;
+        border-bottom: 2px solid rgba(0, 0, 0, 0.2);
+        padding-right: 0;
+        padding-bottom: 25px;
+    }
+
+    .matricula-direita {
+        width: 100%;
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .matricula-esquerda h3 {
+        font-size: 1.7rem;
+    }
+
+    .matricula-direita p {
+        font-size: 1.4rem;
+    }
+
+    .botao-preto {
+        width: 100%;
+        text-align: center;
+    }
+}
+
+/* Configurações Gerais do Footer */
+footer {
+    background-color: #111e2e;
+    /* Azul escuro idêntico à imagem */
+    color: #f3dfbf;
+    /* Tom dourado/creme claro para os textos */
+    font-family: 'Arial', sans-serif;
+    padding: 40px 20px;
+    display: flex;
+    justify-content: center;
+}
+
+footer .container {
+    max-width: 1200px;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+}
+
+/* --- Bloco de Cima: Mapa e Endereço --- */
+.endereco {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 40px;
+    flex-wrap: wrap;
+}
+
+.endereco-mapa {
+    flex: 1;
+    min-width: 300px;
+    max-width: 550px;
+}
+
+.endereco-mapa iframe {
+    width: 100%;
+    height: 280px;
+    border-radius: 10px;
+    /* Bordas arredondadas do mapa */
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+}
+
+.endereco-text {
+    flex: 1;
+    min-width: 250px;
+}
+
+.endereco-text h2 {
+    font-size: 3.5rem;
+    /* Letras grandes para o "Endereço" */
+    font-weight: 300;
+    margin-bottom: 20px;
+    color: #f3dfbf;
+}
+
+.endereco-text a {
+    color: #f3dfbf;
+    text-decoration: none;
+    font-size: 1.2rem;
+    line-height: 1.6;
+    font-weight: bold;
+    display: inline-block;
+}
+
+.endereco-text a:hover {
+    text-shadow: 0 0 5px rgba(243, 223, 191, 0.5);
+}
+
+/* --- Bloco de Baixo: Redes Sociais, Telefones e E-mails --- */
+.contato {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    flex-wrap: wrap;
+    gap: 30px;
+    border-top: 1px solid rgba(243, 223, 191, 0.2);
+    /* Linha sutil de separação */
+    padding-top: 30px;
+}
+
+/* Colunas de links (Redes, Tel, Email) */
+.rede-social,
+.telefone,
+.email {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    flex: 1;
+    min-width: 200px;
+}
+
+/* Estilização dos Links com Ícones */
+.contato a {
+    color: #f3dfbf;
+    text-decoration: none;
+    font-size: 1.1rem;
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    /* Espaço entre o ícone e o texto */
+    transition: transform 0.2s;
+}
+
+.contato a:hover {
+    transform: translateX(5px);
+    /* Efeito suave ao passar o mouse */
+}
+
+/* Ajuste do tamanho dos ícones */
+.contato img {
+    width: 28px;
+    height: 28px;
+    object-fit: contain;
+    /* Se os seus ícones forem brancos ou pretos, você pode usar filter para deixá-los dourados:
+       filter: invert(93%) sepia(13%) saturate(913%) hue-rotate(327deg) brightness(98%) contrast(93%); */
+}
+
+/* --- Créditos dos Devs --- */
+.nome-devs {
+    text-align: center;
+    font-size: 0.8rem;
+    opacity: 0.5;
+    border-top: 1px solid rgba(243, 223, 191, 0.1);
+    padding-top: 15px;
+    color: #f3dfbf;
+}
+
+.nome-devs p {
+    display: inline-block;
+    margin: 0 10px;
 }
