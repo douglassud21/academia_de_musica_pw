@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>formulário - Academia de Música</title>
+    <link rel="stylesheet" href="../css/forms.css">
+</head>
+
+<body>
+
+    <!-- CABECALHO -->
+    <header>
+        <div class="container">
+            <nav>
+
+                <div class="logo">
+                    <img src="../assets/logo.png" alt="">
+                </div><!-- Fim Logo -->
+
+                <!-- MENU HAMBURGUER -->
+                <div class="menu-hamburguer" id="menuHamburguer">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+
+                <ul class="botao-nav" id="menu">
+                    <li><a href="../index.html">Home</a></li>
+                    <li><a href="#contato">Contato</a></li>
+                </ul>
+
+            </nav>
+        </div><!-- Fim Container -->
+    </header><!-- Fim Header -->
+
+    <!-- TÍTULO -->
+    <section>
+
+        <h1> Faça sua <span>Matrícula</span> </h1>
+        <p> Preencha o formulário abaixo e comece sua jornada musical </p>
+
+    </section>
+
+    <!-- FORMULÁRIO -->
+    <section>
+
+        <h2> Dados pessoais </h2>
+        <hr>
+
+        <form>
+            <!-- NOME -->
+            <label for="nome"> Nome completo </label>
+            <input type="txtnome" id="nome" placeholder="Seu nome">
+            <br>
+
+            <!-- DATA -->
+            <label for="data"> Data de nascimento </label>
+            <input type="txtdata" id="data" placeholder="DD/MM/AAAA">
+            <br>
+
+            <!-- CPF -->
+            <label for="cpf"> CPF </label>
+            <input type="txtcpf" id="cpf" placeholder="000.000.000-00">
+            <br>
+
+            <!-- EMAIL -->
+            <label for="email"> E-mail </label>
+            <input type="txtemail" id="email" placeholder="seu@email.com">
+            <br>
+
+            <!-- TELEFONE -->
+            <label for="telefone"> Telefone/WhatsApp </label>
+            <input type="txttelefone" id="telefone" placeholder="(11) 99999-9999">
+            <br>
+
+            <!-- COMO CONHECEU -->
+            <label for="txtconheceu"> Como nos conheceu? </label>
+
+            <select id="conheceu">
+                <option>Selecione...</option>
+                <option>Instagram</option>
+                <option>Facebook</option>
+                <option>Google</option>
+                <option>Indicação</option>
+                <option>Outros...</option>
+            </select>
+
+            <!-- CURSOS -->
+            <hr>
+            <h2> Escolha seu curso </h2>
+            <hr>
+
+            <div>
+                <div>
+                    <input type="radio" name="curso">
+                    <img src="assets/Icone Instrumentos/icone-violão.png" alt="">
+
+                    <h3>Violão</h3>
+                    <p> Clássico & Popular </p>
+                </div>
+
+                <div>
+                    <input type="radio" name="curso">
+                    <img src="assets/Icone Instrumentos/icone-piano.png" alt="">
+
+                    <h3>Piano</h3>
+                    <p> Clássico & Popular </p>
+                </div>
+
+                <div>
+                    <input type="radio" name="curso">
+                    <img src="assets/Icone Instrumentos/icone-canto.png" alt="">
+
+                    <h3>Canto</h3>
+                    <p> Técnica Vocal </p>
+                </div>
+
+                <div>
+                    <input type="radio" name="curso">
+                    <img src="assets/Icone Instrumentos/icone-guitarra.png" alt="">
+
+                    <h3>Guitarra</h3>
+                    <p> Rock & Blues </p>
+                </div>
+
+                <div>
+                    <input type="radio" name="curso">
+                    <img src="assets/Icone Instrumentos/icone-bateria.png" alt="">
+
+                    <h3>Bateria</h3>
+                    <p> Ritmo & Técnica </p>
+                </div>
+
+                <div>
+                    <input type="radio" name="curso">
+                    <img src="assets/Icone Instrumentos/icone-violino.png" alt="">
+
+                    <h3>Violino</h3>
+                    <p> Clássico & Popular </p>
+                </div>
+            </div>
+
+            <!-- HORÁRIOS -->
+            <hr>
+            <h2> Preferência de horário </h2>
+            <hr>
+
+            <div>
+                <div>
+                    <h3>SEG / QUA</h3>
+                    <p>09h - 10h</p>
+                </div>
+
+                <div>
+                    <h3>TER / QUI</h3>
+                    <p>14h - 15h</p>
+                </div>
+
+                <div>
+                    <h3>SEX / SAB</h3>
+                    <p>10h - 11h</p>
+                </div>
+
+                <div>
+                    <h3>QUI / SEX</h3>
+                    <p>18h - 19h</p>
+                </div>
+            </div>
+
+            <!-- EXPERIÊNCIA -->
+            <hr>
+            <h2> Informações adicionais </h2>
+            <hr>
+
+            <label for="nivel"> Nível de experiência </label>
+
+            <select id="nivel"> 
+                <option>Selecione...</option>
+                <option> Sem experiência - Iniciante </option>
+                <option> Intermediário </option>
+                <option> Avançado </option>
+            </select>
+
+            <label for="mensagem"> Conte pra gente o que você espera das aulas... </label>
+            <textarea id="mensagem" placeholder="Digite aqui..." ></textarea>
+            <button type="submit"> Matricule-se </button>
+
+            <p> Ao se matricular você ganha o primeiro mês grátis </p>
+
+        </form>
+    </section>
+
+    <footer>
+        <div class="container">
+            <div class="endereco">
+
+                <div class="endereco-mapa">    
+                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3657.595397227444!2d-46.4388806!3d-23.547050499999997!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x94ce6427fe3f5b23%3A0x54b863d343c81f8f!2sEscola%20T%C3%A9cnica%20Estadual%20Itaquera!5e0!3m2!1spt-BR!2sbr!4v1778788130260!5m2!1spt-BR!2sbr" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                </div><!-- Fim Endereço Mapa -->
+
+                <div class="endereco-text">
+                    <h2>Endereço</h2>
+                    <a href="https://www.google.com/maps/place/Escola+T%C3%A9cnica+Estadual+Itaquera/@-23.5470505,-46.4388806,17z/data=!3m1!4b1!4m5!3m4!1s0x94ce6427fe3f5b23:0x54b863d343c81f8f!8m2!3d-23.5470505!4d-46.4388806" target="_blank">
+                        R. Virgínia Ferni, 400 -<br>Itaquera, São Paulo - SP,<br>08253-000
+                    </a>
+                </div><!-- Fim Endereço-Text -->
+
+            </div><!-- Fim Endereço -->
+
+            <div class="contato" id="contato">
+
+                <div class="rede-social">
+                    
+                    <a href="https://www.facebook.com" target="_blank">
+                    <img src="../assets/icones/icone-facebook.png" alt=""> Facebook</a>
+
+                    <a href="https://www.instagram.com" target="_blank">
+                    <img src="../assets/icones/icone-instagram.png" alt=""> Instagram</a>
+                    
+                    <a href="https://www.twitter.com" target="_blank">
+                    <img src="../assets/icones/icone-twitter.png" alt=""> Twitter</a>
+               
+                </div><!-- Fim Rede Social -->
+
+                <div class="telefone">
+                    <a href="tel:+5511999999999"><img src="../assets/icones/icone-telefone.png" alt=""> (11) 9 9999-9999</a>
+                    <a href="tel:+5511999999999"><img src="../assets/icones/icone-telefone.png" alt=""> (11) 9 9999-9999</a>
+                </div><!-- Fim Telefone -->
+
+                <div class="email">                
+                    <a href="mailto:Academiademusica@gmail.com"><img src="../assets/icones/icone-email.png" alt=""> Academiademusica@gmail.com</a>
+                    <a href="mailto:Academiademusica02@gmail.com"><img src="../assets/icones/icone-email.png" alt=""> Academiademusica02@gmail.com</a>
+                </div><!-- Fim Email -->
+
+            </div><!-- Fim Contato -->
+
+            <div class="nome-devs">
+                <h4>Desenvolvido por: </h4>
+                <p>Allan Gabriel</p>
+                <p>Douglas Nascimento</p>
+                <p>Gustavo Pecora</p>
+                <p>Vitória Esteves</p>
+            </div><!-- Fim Nome-Devs -->
+
+        </div><!-- Fim Container -->
+    </footer><!-- Fim Footer -->
+
+    <script src="../js/script.js"></script>
+</body>
+</html>
