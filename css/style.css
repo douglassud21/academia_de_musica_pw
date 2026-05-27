@@ -1,6 +1,7 @@
 /* =========================
    RESET
 ========================= */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
 
 * {
     margin: 0;
@@ -12,7 +13,6 @@
 body {
     overflow-x: hidden;
     background-color: #07152f;
-    cursor: none;
 }
 
 /* =========================
@@ -1936,56 +1936,3 @@ html {
     }
 }
 
-/* Cursor */
-
-.cursor {
-    width: 22px;
-    height: 22px;
-
-    position: fixed;
-    top: 0;
-    left: 0;
-
-    border: 2px solid #d4af37;
-    border-radius: 50%;
-
-    pointer-events: none;
-
-    transform: translate(-50%, -50%);
-
-    z-index: 9999999;
-
-    backdrop-filter: blur(2px);
-
-    box-shadow: 
-        0 0 10px #d4af37,
-        0 0 20px rgba(212, 175, 55, 0.6),
-        inset 0 0 10px rgba(255, 255, 255, 0.2)
-    ;
-
-    transition: 
-        width 0.2s ease, 
-        height 0.2s ease, 
-        transform 0.08s ease
-    ;
-
-}
-
-.cursor::before{
-    content: "";
-
-    width: 6px;
-    height: 6px;
-
-    background: #f5d76e;
-
-    border-radius: 50%;
-    position: absolute;
-
-    top: 50%;
-    left: 50%;
-
-    transform: translate(-50%, -50%);
-
-    box-shadow: 0 0 10px #f5d76e;
-}

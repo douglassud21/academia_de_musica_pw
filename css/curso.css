@@ -441,6 +441,11 @@ nav ul li a:hover::after {
         padding: 18px 20px;
         font-size: 20px;
     }
+
+    .container-botao {
+        width: 400px;
+        margin-left: 40px;
+    }
 }
 
 /* Configurações Gerais do Footer */
@@ -730,4 +735,10 @@ footer .container {
     transform: translate(-50%, -50%);
 
     box-shadow: 0 0 10px #f5d76e;
+}
+
+@media screen and (max-width: 768px) {
+    ::-webkit-scrollbar {
+        display: none;
+    }
 }
