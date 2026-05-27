@@ -1,7 +1,6 @@
 /* =========================
    RESET
 ========================= */
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
 
 * {
     margin: 0;
@@ -13,6 +12,7 @@
 body {
     overflow-x: hidden;
     background-color: #07152f;
+    cursor: none;
 }
 
 /* =========================
@@ -1935,4 +1935,3 @@ html {
         display: none;
     }
 }
-
